@@ -65,6 +65,13 @@
                 <x-slot:headline>Ansprechpartner</x-slot:headline>
             </x-dashboard-tile>
 
+            <!--
+            <x-dashboard-tile :path="asset('assets/images/ansprechpartner.jpg')">
+                <x-slot:link>{{ route('survey') }}</x-slot:link>
+                <x-slot:headline>Umfrage</x-slot:headline>
+            </x-dashboard-tile>
+            -->
+
         </x-dashboard-tile-container>
 
     </x-section>

@@ -19,7 +19,7 @@ module.exports = {
                 bgColorSecondary: '#575757',
                 bgColorTertiary: '',
             },
-            // Basisstile definieren
+            // Basisstile definieren / no tap color
             '@layer base': {
                 html: {
                     '-webkit-tap-highlight-color': 'transparent',

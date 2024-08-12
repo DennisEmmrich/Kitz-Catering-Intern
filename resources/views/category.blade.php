@@ -37,6 +37,10 @@
                     <!-- content slot -->
                     <x-h1>{{ $recipe['product'] }}</x-h1>
 
+                    @if(!empty($recipe['$descr']))
+                    <x-p class="italic mt-2">„{{ $descr }}”</x-p>
+                    @endif
+
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
                         @if(!empty($recipe['firstImage']))
                             <x-recipe-image>
