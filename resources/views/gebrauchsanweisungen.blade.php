@@ -47,12 +47,12 @@
             let input = inputField.value.toLowerCase();
 
             // Validierung: Erlaube nur Buchstaben, Zahlen, Bindestriche und Leerzeichen
-            const validPattern = /^[a-z0-9\s-]*$/;
+            const validPattern = /^[a-z0-9\s\-äöüÄÖÜ]*$/;
 
             if (!validPattern.test(input)) {
                 // Entferne alle unerlaubten Zeichen
-                input = input.replace(/[^a-z0-9\s-]/g, '');
-                alert("Nur Buchstaben, Zahlen, Leerzeichen und Bindestriche sind erlaubt.");
+                input = input.replace(/[^a-z0-9\s\-äöüÄÖÜ]/g, '');
+                alert("Nur Buchstaben, Zahlen, Bindestriche, Leerzeichen und die Umlaute ä, ö, ü sind erlaubt.");
                 inputField.value = input; // Aktualisiere das Suchfeld mit der bereinigten Eingabe
             }
 
