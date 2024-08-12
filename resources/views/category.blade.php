@@ -9,7 +9,7 @@
     <x-section link="rezepte">
 
         <!-- Suchleiste -->
-        <div class="w-full mb-6 flex">
+        <div class="w-full mb-6 flex relative">
             <input
                 type="text"
                 id="searchInput"
@@ -19,7 +19,7 @@
             />
             <button
                 type="button"
-                class="absolute right-10 top-2 transform px-1.5 text-gray-500 hover:text-gray-700 focus:outline-none"
+                class="absolute right-3 top-2 transform px-1.5 text-gray-500 hover:text-gray-700 focus:outline-none"
                 onclick="clearSearch()"
             >
                 &#x2715;
@@ -34,9 +34,7 @@
         </script>
 
         <x-dashboard-tile-container>
-
                 @foreach($recipes as $recipe)
-                <div id="recipeContainer">
                     <div class="recipe-item" data-product="{{ strtolower($recipe['product']) }}">
                         <!-- modal -->
                         <x-modal>
@@ -103,7 +101,7 @@
                                 </div>
 
                                 <div class="col-span-3 md:col-span-1 md:mt-4">
-                                    <h2>Allergene</h2>
+                                    <x-h2>Allergene</x-h2>
                                     <div class="grid grid-cols-3 md:grid-cols-2 mt-2.5">
                                         @if(!empty($recipe['allergenics']))
                                             @foreach($recipe['allergenics'] as $allergenic)
@@ -130,9 +128,7 @@
 
                         </x-modal>
                     </div>
-                </div>
                 @endforeach
-
 
             <script>
                 function filterRecipes() {
@@ -142,9 +138,9 @@
                     items.forEach(function(item) {
                         let product = item.getAttribute('data-product');
                         if (product.includes(input)) {
-                            item.style.display = "";
+                            item.classList.remove('hidden');
                         } else {
-                            item.style.display = "none";
+                            item.classList.add('hidden');
                         }
                     });
                 }
