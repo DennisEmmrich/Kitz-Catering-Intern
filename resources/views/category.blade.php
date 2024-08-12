@@ -4,7 +4,7 @@
     'path' => '',
 ])
 
-<x-layout pageTitle="Kitz-Catering / Belegte Brötchen">
+<x-layout pageTitle="Kitz-Catering / Rezepte">
 
     <x-section link="rezepte">
 
