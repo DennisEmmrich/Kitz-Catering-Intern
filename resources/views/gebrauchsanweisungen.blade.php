@@ -43,7 +43,19 @@
 
     <script>
         function filterManuals() {
-            let input = document.getElementById('searchInput').value.toLowerCase();
+            let inputField = document.getElementById('searchInput');
+            let input = inputField.value.toLowerCase();
+
+            // Validierung: Erlaube nur Buchstaben, Zahlen, Bindestriche und Leerzeichen
+            const validPattern = /^[a-z0-9\s-]*$/;
+
+            if (!validPattern.test(input)) {
+                // Entferne alle unerlaubten Zeichen
+                input = input.replace(/[^a-z0-9\s-]/g, '');
+                alert("Nur Buchstaben, Zahlen, Leerzeichen und Bindestriche sind erlaubt.");
+                inputField.value = input; // Aktualisiere das Suchfeld mit der bereinigten Eingabe
+            }
+
             let items = document.querySelectorAll('#manualContainer .manual-item');
 
             items.forEach(function(item) {
