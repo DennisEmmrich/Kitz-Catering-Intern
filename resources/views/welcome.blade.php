@@ -39,19 +39,15 @@
             </x-dashboard-tile>
             -->
 
-            <!--
             <x-dashboard-tile :path="asset( 'assets/images/betriebsanweisungen.jpg' )">
                 <x-slot:link>{{ route('betriebsanweisungen') }}</x-slot:link>
                 <x-slot:headline>Betriebsanweisungen</x-slot:headline>
             </x-dashboard-tile>
-            -->
 
-            <!--
             <x-dashboard-tile :path="asset('assets/images/gebrauchsanweisung.jpg')">
                 <x-slot:link>{{ route('gebrauchsanweisungen') }}</x-slot:link>
                 <x-slot:headline>Gebrauchsanweisungen</x-slot:headline>
             </x-dashboard-tile>
-            -->
 
             <!--
             <x-dashboard-tile :path="asset('assets/images/onboarding.jpg')">

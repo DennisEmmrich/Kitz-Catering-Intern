@@ -26,13 +26,6 @@
             </button>
         </div>
 
-        <script>
-            function clearSearch() {
-                document.getElementById('searchInput').value = '';
-                filterRecipes(); // Um sicherzustellen, dass die Filterung aktualisiert wird
-            }
-        </script>
-
         <x-dashboard-tile-container>
                 @foreach($recipes as $recipe)
                     <div class="recipe-item" data-product="{{ strtolower($recipe['product']) }}">
@@ -143,6 +136,11 @@
                             item.classList.add('hidden');
                         }
                     });
+                }
+
+                function clearSearch() {
+                    document.getElementById('searchInput').value = '';
+                    filterRecipes(); // Um sicherzustellen, dass die Filterung aktualisiert wird
                 }
             </script>
 
