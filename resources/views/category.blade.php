@@ -37,6 +37,10 @@
                     <!-- content slot -->
                     <x-h1>{{ $recipe['product'] }}</x-h1>
 
+                    @if(!empty($recipe['descr']))
+                    <x-p class="italic mt-2">„{{ $recipe['descr'] }}”</x-p>
+                    @endif
+
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
                         @if(!empty($recipe['firstImage']))
                             <x-recipe-image>
@@ -60,28 +64,32 @@
                         <div class="col-span-3 md:col-span-2 mt-4">
                             <x-h2>Zutaten</x-h2>
                             <table class="mt-3">
-                            @foreach($recipe['ingredients'] as $ingredient)
-                                    <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
-                                        <td class="w-full pl-3 py-1"><x-p>{{ $ingredient['ingredient'] }}</x-p></td>
-                                        <td class="w-auto whitespace-nowrap px-3 py-1"><x-p>{{ $ingredient['quantity'] }}</x-p></td>
-                                    </tr>
-                            @endforeach
+                                @if(!empty($recipe['ingredients']))
+                                    @foreach($recipe['ingredients'] as $ingredient)
+                                            <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
+                                                <td class="w-full pl-3 py-1"><x-p>{{ $ingredient['ingredient'] }}</x-p></td>
+                                                <td class="w-auto whitespace-nowrap px-3 py-1"><x-p>{{ $ingredient['quantity'] }}</x-p></td>
+                                            </tr>
+                                    @endforeach
+                                @endif
                             </table>
                         </div>
 
                         <div class="col-span-3 md:col-span-1 md:mt-4">
                             <x-h2>Allergene</x-h2>
                             <div class="grid grid-cols-3 md:grid-cols-2 mt-2.5">
-                            @foreach($recipe['allergenics'] as $allergenic)
-                                <div class="flex col-span-1 space-x-1 p-0.5">
-                                    <img class="h-8 w-8 my-auto" src="{{ asset('assets/icons/'.$allergenic.'.svg') }}" alt="">
-                                    <div class="max-h-fit my-auto">
-                                        <x-p>
-                                        {{ $allergenic }}
-                                        </x-p>
-                                    </div>
-                                </div>
-                            @endforeach
+                                @if(!empty($recipe['allergenics']))
+                                    @foreach($recipe['allergenics'] as $allergenic)
+                                        <div class="flex col-span-1 space-x-1 p-0.5">
+                                            <img class="h-8 w-8 my-auto" src="{{ asset('assets/icons/'.$allergenic.'.svg') }}" alt="">
+                                            <div class="max-h-fit my-auto">
+                                                <x-p>
+                                                {{ $allergenic }}
+                                                </x-p>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @endif
                             </div>
                         </div>
 

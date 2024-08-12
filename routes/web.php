@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\PageController;
+use App\Http\Controllers\SurveyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,5 +31,8 @@ Route::get('/ansprechpartner', [PageController::class,"ansprechpartner"])->name(
 Route::get('/einkauf', function () {
     return view('einkauf');
 })->name('einkauf');
+
+Route::get('/survey', [SurveyController::class, 'show'])->name('survey');
+Route::post('/survey', [SurveyController::class, 'submit'])->name('survey');
 
 
