@@ -32,7 +32,13 @@
                         </x-slot:button>
 
                         <!--content slot -->
-                        <x-iframe :path="getAsset($operatingInstruction['file']['_id'])"/>
+
+                        <div style="width: 100%; height: 100vh;">
+                            <object data="{{ getAsset($operatingInstruction['file']['_id']) }}" type="application/pdf" width="100%" height="100%">
+                                <p>Your browser does not support PDFs. <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">Download the PDF</a>.</p>
+                            </object>
+                        </div>
+
                         <!--end content slot -->
                     </x-modal>
                 </div>
