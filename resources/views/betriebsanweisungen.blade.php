@@ -34,9 +34,9 @@
                         <!--content slot -->
 
                         <div style="width: 100%; height: 100vh;">
-                            <object data="{{ getAsset($operatingInstruction['file']['_id']) }}" type="application/pdf" width="100%" height="100%">
-                                <p>Your browser does not support PDFs. <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">Download the PDF</a>.</p>
-                            </object>
+                            <iframe src="{{ getAsset($operatingInstruction['file']['_id']) }}" width="100%" height="100%" style="border:none;">
+                                Your browser does not support PDFs. <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">Download the PDF</a>.
+                            </iframe>
                         </div>
 
                         <!--end content slot -->
