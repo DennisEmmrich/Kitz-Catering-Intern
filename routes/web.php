@@ -26,7 +26,11 @@ Route::get('/betriebsanweisungen', [PageController::class,'operatingInstructions
 
 Route::get('/gebrauchsanweisungen', [PageController::class,'manuals'])->name('gebrauchsanweisungen');
 
+Route::get('/gesetze', [PageController::class,'laws'])->name('gesetze');
+
 Route::get('/ansprechpartner', [PageController::class,"ansprechpartner"])->name('ansprechpartner');
+
+
 
 Route::get('/einkauf', function () {
     return view('einkauf');
