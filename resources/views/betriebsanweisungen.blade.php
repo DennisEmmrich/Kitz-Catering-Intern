@@ -23,18 +23,13 @@
         <div class="grid grid-cols-1" id="operatingInstructionContainer">
             @foreach($operatingInstructions as $operatingInstruction)
                 <div class="operating-instruction-item" data-title="{{ strtolower($operatingInstruction['title']) }}">
-                    <!-- modal -->
-                    <x-modal>
-                        <x-slot:button>
-                            <x-list-item>
-                                {{ $operatingInstruction['title'] }}
-                            </x-list-item>
-                        </x-slot:button>
 
-                        <!--content slot -->
-                        <x-iframe :path="getAsset($operatingInstruction['file']['_id'])"/>
-                        <!--end content slot -->
-                    </x-modal>
+                    <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">
+                        <x-list-item>
+                            {{ $operatingInstruction['title'] }}
+                        </x-list-item>
+                    </a>
+
                 </div>
             @endforeach
         </div>
