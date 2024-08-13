@@ -32,17 +32,7 @@
                         </x-slot:button>
 
                         <!--content slot -->
-                        <div id="pdf-container-{{ $loop->index }}" style="width: 100%; height: 100vh;">
-                            <iframe
-                                src="{{ getAsset($operatingInstruction['file']['_id']) }}"
-                                width="100%"
-                                height="100%"
-                                style="border: none;"
-                                onload="checkIframe(this, '{{ getAsset($operatingInstruction['file']['_id']) }}', {{ $loop->index }})">
-                                Your browser does not support PDFs.
-                            </iframe>
-                            <canvas id="pdf-canvas-{{ $loop->index }}" style="width: 100%; height: auto; display: none;"></canvas>
-                        </div>
+                        <x-iframe :path="getAsset($operatingInstruction['file']['_id'])"/>
                         <!--end content slot -->
                     </x-modal>
                 </div>
@@ -51,7 +41,6 @@
 
     </x-section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
     <script>
         function filterOperatingInstructions() {
             let inputField = document.getElementById('searchInput');
@@ -82,34 +71,6 @@
         function clearSearch() {
             document.getElementById('searchInput').value = '';
             filterOperatingInstructions(); // Um sicherzustellen, dass die Filterung aktualisiert wird
-        }
-
-        function checkIframe(iframe, url, index) {
-            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-            if (iframeDoc && iframeDoc.body.childNodes.length === 0) {
-                iframe.style.display = 'none';
-                const canvas = document.getElementById(`pdf-canvas-${index}`);
-                canvas.style.display = 'block';
-
-                // PDF.js Laden und Rendern
-                const loadingTask = pdfjsLib.getDocument(url);
-                loadingTask.promise.then(pdf => {
-                    pdf.getPage(1).then(page => {
-                        const scale = 1.5;
-                        const viewport = page.getViewport({ scale: scale });
-
-                        const context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-
-                        const renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        page.render(renderContext);
-                    });
-                });
-            }
         }
     </script>
 
