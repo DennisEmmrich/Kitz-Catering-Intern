@@ -23,18 +23,13 @@
         <div class="grid grid-cols-1" id="manualContainer">
             @foreach($manuals as $manual)
                 <div class="manual-item" data-title="{{ strtolower($manual['title']) }}">
-                    <!-- modal -->
-                    <x-modal>
-                        <x-slot:button>
-                            <x-list-item>
-                                {{ $manual['title'] }}
-                            </x-list-item>
-                        </x-slot:button>
 
-                        <!--content slot -->
-                        <x-iframe :path="getAsset($manual['file']['_id'])"/>
-                        <!--end content slot -->
-                    </x-modal>
+                    <a href="{{ getAsset($manual['file']['_id']) }}">
+                        <x-list-item>
+                            {{ $manual['title'] }}
+                        </x-list-item>
+                    </a>
+
                 </div>
             @endforeach
         </div>
