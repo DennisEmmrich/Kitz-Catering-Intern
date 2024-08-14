@@ -56,7 +56,7 @@
                             <x-h1 class="product-title">{{ $recipe['product'] }}</x-h1>
 
                             @if(!empty($recipe['descr']))
-                                <p class="italic mt-2">„{{ $recipe['descr'] }}”</p>
+                                <p class="italic mt-2 md:mr-20">„{{ $recipe['descr'] }}”</p>
                             @endif
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
@@ -78,7 +78,7 @@
                             </div>
 
                             <x-h2 class="mt-10">
-                                @if(isset($recipe['portion']))
+                                @if(isset($recipe['portion']['quantity']))
                                     Portionsgröße:
                                     @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
                                         {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
@@ -97,7 +97,7 @@
                                         <div class="flex justify-between">
                                             <x-h2>Zutaten</x-h2>
                                             <x-h2>
-                                                @if(isset($recipe['recipeQuantity']))
+                                                @if(isset($recipe['recipeQuantity']['quantity']))
                                                     je
                                                     @if(floor($recipe['recipeQuantity']['quantity']) != $recipe['recipeQuantity']['quantity'])
                                                         {{ number_format($recipe['recipeQuantity']['quantity'], 1, ',', '.') }}
