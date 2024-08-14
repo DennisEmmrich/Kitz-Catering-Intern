@@ -89,11 +89,9 @@
                                 @endif
                             </x-h2>
 
-                            <div class="grid grid-cols-3 gap-x-10">
-
+                            <div class="grid grid-cols-6">
                                 @if(!empty($recipe['ingredients']))
-                                    <div class="col-span-3 md:col-span-2 mt-4">
-
+                                    <div class="col-span-5 mt-4">
                                         <div class="flex justify-between">
                                             <x-h2>Zutaten</x-h2>
                                             <x-h2>
@@ -113,18 +111,50 @@
                                             @foreach($recipe['ingredients'] as $ingredient)
                                                 <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
                                                     <td class="w-full pl-3 py-1"><p>{{ $ingredient['ingredient'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pl-3 py-1 text-right"><p>{{ $ingredient['quantity'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['unit'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['itemNumber'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['supplier'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['type'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pl-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
+                                                    <!--
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionOne'] </p></td>
+                                                    -->
+                                                    <!--
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionTwo'] </p></td>
+                                                    -->
+                                                    <!--
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionThree'] </p></td>
+                                                    -->
                                                 </tr>
                                             @endforeach
                                         </table>
                                     </div>
-                                @endif
 
+
+                                    <!-- Zutatenrechner -->
+                                    <!--
+                                    <div class="col-span-1 mt-4 outline">
+                                        <div class="w-full flex">
+                                            <x-h2 class="mx-auto">Zutaten</x-h2>
+                                        </div>
+                                        <table class="w-full mt-3">
+                                            @foreach($recipe['ingredients'] as $ingredient)
+                                                <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
+                                                    <td class="w-auto whitespace-nowrap pl-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
+                                                </tr>
+                                            @endforeach
+                                        </table>
+                                    </div>
+                                    -->
+
+
+                                @endif
+                            </div>
+
+                            <div class="grid grid-cols-3">
                                 @if(!empty($recipe['allergenics']))
-                                    <div class="col-span-3 md:col-span-1 md:mt-4">
+                                    <div class="col-span-3 md:mt-4">
                                         <x-h2>Allergene</x-h2>
-                                        <div class="grid grid-cols-3 md:grid-cols-2 mt-2.5">
+                                        <div class="grid grid-cols-3 md:grid-cols-6 mt-2.5">
                                             @foreach($recipe['allergenics'] as $allergenic)
                                                 <div class="flex col-span-1 space-x-1 p-0.5">
                                                     <img class="h-8 w-8 my-auto" src="{{ asset('assets/icons/'.$allergenic.'.svg') }}" alt="">
@@ -138,7 +168,6 @@
                                         </div>
                                     </div>
                                 @endif
-
                             </div>
 
                             @if(!empty($recipe['remarks']))
