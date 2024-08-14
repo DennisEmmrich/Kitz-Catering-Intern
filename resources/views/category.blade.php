@@ -77,6 +77,18 @@
                                 @endif
                             </div>
 
+                            <x-h2 class="mt-10">
+                                @if(isset($recipe['portion']))
+                                    Portionsgröße:
+                                    @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
+                                        {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
+                                    @else
+                                        {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
+                                    @endif
+                                    {{ $recipe['portion']['unit'] ?? '' }}
+                                @endif
+                            </x-h2>
+
                             <div class="grid grid-cols-3 gap-x-10">
 
                                 @if(!empty($recipe['ingredients']))
@@ -85,14 +97,14 @@
                                         <div class="flex justify-between">
                                             <x-h2>Zutaten</x-h2>
                                             <x-h2>
-                                                @if(isset($recipe['portion']))
-                                                    Portion:
-                                                    @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
-                                                        {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
+                                                @if(isset($recipe['recipeQuantity']))
+                                                    je
+                                                    @if(floor($recipe['recipeQuantity']['quantity']) != $recipe['recipeQuantity']['quantity'])
+                                                        {{ number_format($recipe['recipeQuantity']['quantity'], 1, ',', '.') }}
                                                     @else
-                                                        {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
+                                                        {{ number_format($recipe['recipeQuantity']['quantity'], 0, ',', '.') }}
                                                     @endif
-                                                    {{ $recipe['portion']['unit'] ?? '' }}
+                                                    {{ $recipe['recipeQuantity']['unit'] ?? '' }}
                                                 @endif
                                             </x-h2>
                                         </div>
