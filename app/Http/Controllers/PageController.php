@@ -85,4 +85,14 @@ class PageController extends Controller
             'manuals' => $manuals
         ]);
     }
+
+    public function laws()
+    {
+        $cms = new CockpitApiClient;
+        $laws = $cms->model('laws')->result();
+
+        return view('gesetze', [
+            'laws' => $laws
+        ]);
+    }
 }

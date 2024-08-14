@@ -50,6 +50,13 @@
             </x-dashboard-tile>
 
             <!--
+            <x-dashboard-tile :path="asset( 'assets/images/gesetze.jpg' )">
+                <x-slot:link>{{ route('gesetze') }}</x-slot:link>
+                <x-slot:headline>Aushangpflichtige Gesetze</x-slot:headline>
+            </x-dashboard-tile>
+            -->
+
+            <!--
             <x-dashboard-tile :path="asset('assets/images/onboarding.jpg')">
                 <x-slot:link></x-slot:link>
                 <x-slot:headline>Onboarding</x-slot:headline>
