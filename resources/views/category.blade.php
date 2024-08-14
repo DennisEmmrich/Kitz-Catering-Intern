@@ -78,7 +78,7 @@
                             </div>
 
                             <x-h2 class="mt-10">
-                                @if(isset($recipe['portion']['quantity']))
+                                @if(isset($recipe['portion']['quantity']) && isset($recipe['portion']['unit']))
                                     Portionsgröße:
                                     @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
                                         {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
@@ -97,7 +97,7 @@
                                         <div class="flex justify-between">
                                             <x-h2>Zutaten</x-h2>
                                             <x-h2>
-                                                @if(isset($recipe['recipeQuantity']['quantity']))
+                                                @if(isset($recipe['recipeQuantity']['quantity']) && isset($recipe['recipeQuantity']['unit']))
                                                     je
                                                     @if(floor($recipe['recipeQuantity']['quantity']) != $recipe['recipeQuantity']['quantity'])
                                                         {{ number_format($recipe['recipeQuantity']['quantity'], 1, ',', '.') }}
