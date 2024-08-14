@@ -81,12 +81,28 @@
 
                                 @if(!empty($recipe['ingredients']))
                                     <div class="col-span-3 md:col-span-2 mt-4">
-                                        <x-h2>Zutaten</x-h2>
+
+                                        <div class="flex justify-between">
+                                            <x-h2>Zutaten</x-h2>
+                                            <x-h2>
+                                                @if(isset($recipe['portion']))
+                                                    Portion:
+                                                    @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
+                                                        {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
+                                                    @else
+                                                        {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
+                                                    @endif
+                                                    {{ $recipe['portion']['unit'] ?? '' }}
+                                                @endif
+                                            </x-h2>
+                                        </div>
+
                                         <table class="mt-3">
                                             @foreach($recipe['ingredients'] as $ingredient)
                                                 <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
                                                     <td class="w-full pl-3 py-1"><p>{{ $ingredient['ingredient'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap px-3 py-1"><p>{{ $ingredient['quantity'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pl-3 py-1 text-right"><p>{{ $ingredient['quantity'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['unit'] }}</p></td>
                                                 </tr>
                                             @endforeach
                                         </table>
