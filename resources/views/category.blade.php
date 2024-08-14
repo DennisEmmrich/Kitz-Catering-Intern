@@ -114,7 +114,7 @@
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['itemNumber'] }}</p></td>
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['supplier'] }}</p></td>
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['type'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pl-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
+                                                    <td class="w-auto whitespace-nowrap px-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
                                                     <!--
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionOne'] </p></td>
                                                     -->
