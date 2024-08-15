@@ -56,7 +56,7 @@
                             <x-h1 class="product-title">{{ $recipe['product'] }}</x-h1>
 
                             @if(!empty($recipe['descr']))
-                                <p class="italic mt-2 md:mr-20">„{{ $recipe['descr'] }}”</p>
+                                <x-p class="italic mt-2 md:mr-20 select-none cursor-default">„{{ $recipe['descr'] }}”</x-p>
                             @endif
 
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4">
