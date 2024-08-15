@@ -78,20 +78,20 @@
                             </div>
 
                             <x-h2 class="mt-10">
-                                @if(isset($recipe['portion']['quantity']) && isset($recipe['portion']['unit']))
+                                @if(isset($recipe['portion']['quantity']) && isset($recipe['recipeQuantity']['unit']))
                                     Portionsgröße:
                                     @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
                                         {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
                                     @else
                                         {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
                                     @endif
-                                    {{ $recipe['portion']['unit'] ?? '' }}
+                                    {{ $recipe['recipeQuantity']['unit'] ?? '' }}
                                 @endif
                             </x-h2>
 
                             <div class="grid grid-cols-6">
                                 @if(!empty($recipe['ingredients']))
-                                    <div class="col-span-5 mt-4">
+                                    <div class="col-span-6 md:col-span-5 mt-4">
                                         <div class="flex justify-between">
                                             <x-h2>Zutaten</x-h2>
                                             <x-h2>
@@ -111,9 +111,9 @@
                                             @foreach($recipe['ingredients'] as $ingredient)
                                                 <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
                                                     <td class="w-full pl-3 py-1"><p>{{ $ingredient['ingredient'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['itemNumber'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['supplier'] }}</p></td>
-                                                    <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p>{{ $ingredient['type'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['itemNumber'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['supplier'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['type'] }}</p></td>
                                                     <td class="w-auto whitespace-nowrap px-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
                                                     <!--
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionOne'] </p></td>
@@ -129,25 +129,11 @@
                                         </table>
                                     </div>
 
+                                    <!-- Zutatenrechner Entwurf -->
 
-                                    <!-- Zutatenrechner -->
-                                    <!--
-                                    <div class="col-span-1 mt-4 outline">
-                                        <div class="w-full flex">
-                                            <x-h2 class="mx-auto">Zutaten</x-h2>
-                                        </div>
-                                        <table class="w-full mt-3">
-                                            @foreach($recipe['ingredients'] as $ingredient)
-                                                <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
-                                                    <td class="w-auto whitespace-nowrap pl-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
-                                                </tr>
-                                            @endforeach
-                                        </table>
-                                    </div>
-                                    -->
+                                    <!-- Zutatenrechner Enwurf Ende -->
 
-
-                                @endif
+                               @endif
                             </div>
 
                             <div class="grid grid-cols-3">
