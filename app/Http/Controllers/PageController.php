@@ -71,6 +71,15 @@ class PageController extends Controller
         $cms = new CockpitApiClient;
         $operatingInstructions = $cms->model('operatingInstructions')->result();
 
+
+        // Funktion zur Vergleichsfunktion für die Sortierung nach dem Titel
+        $compareFunction = function($a, $b) {
+            return strcmp($a['title'], $b['title']);
+        };
+
+        // Alphabetisch nach Titel sortieren
+        usort($operatingInstructions, $compareFunction);
+
         return view('betriebsanweisungen', [
             'operatingInstructions' => $operatingInstructions
         ]);
@@ -80,6 +89,14 @@ class PageController extends Controller
     {
         $cms = new CockpitApiClient;
         $manuals = $cms->model('manuals')->result();
+
+        // Funktion zur Vergleichsfunktion für die Sortierung nach dem Titel
+        $compareFunction = function($a, $b) {
+            return strcmp($a['title'], $b['title']);
+        };
+
+        // Alphabetisch nach Titel sortieren
+        usort($manuals, $compareFunction);
 
         return view('gebrauchsanweisungen', [
             'manuals' => $manuals
