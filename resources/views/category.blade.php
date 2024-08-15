@@ -2,6 +2,8 @@
     'recipes' => array(),
     'ingredients' => array(),
     'path' => '',
+    'vegetarian' => false,
+    'vegan' => false,
 ])
 
 <x-layout pageTitle="Kitz-Catering / Rezepte">
@@ -34,20 +36,19 @@
                             <x-slot:button>
                                 <!-- tile -->
                                 <div class="cursor-pointer" @click="fullscreenModal=true" draggable="false">
-                                    @if(!empty($recipe['thirdImage']))
-                                        <div class="w-full h-56 grid content-end text-white text-xl lg:text-2xl font-bold font-sans rounded-xl shadow-md bg-cover bg-center" style="background-image: url('{{ getImage($recipe['thirdImage']['_id'], 'webp', 600) }}');">
-                                            <div class="p-3 backdrop-blur-sm bg-bgColorSecondary/30 whitespace-nowrap rounded-b-xl">
-                                                {{ $recipe['product'] }}
-                                            </div>
+                                    <div class="w-full h-56 grid content-end text-white text-xl lg:text-2xl font-bold font-sans rounded-xl shadow-md bg-cover bg-center relative"
+                                         style="background-image: url('{{ !empty($recipe['thirdImage']) ? getImage($recipe['thirdImage']['_id'], 'webp', 600) : asset('assets/images/placeholder.jpeg') }}');">
+
+                                        @if(isset($recipe['vegetarian']) && $recipe['vegetarian'])
+                                            <img class="h-10 absolute top-2 right-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @elseif(isset($recipe['vegan']) && $recipe['vegan'])
+                                            <img class="h-10 absolute top-2 right-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @endif
+
+                                        <div class="p-3 backdrop-blur-sm bg-bgColorSecondary/30 whitespace-nowrap rounded-b-xl">
+                                            {{ $recipe['product'] }}
                                         </div>
-                                    @else
-                                        <!-- Placeholder image -->
-                                        <div class="w-full h-56 grid content-end text-white text-xl lg:text-2xl font-bold font-sans rounded-xl shadow-md bg-cover bg-center" style="background-image: url('{{ asset('assets/images/placeholder.jpeg') }}');">
-                                            <div class="p-3 backdrop-blur-sm bg-bgColorSecondary/30 whitespace-nowrap rounded-b-xl">
-                                                {{ $recipe['product'] }}
-                                            </div>
-                                        </div>
-                                    @endif
+                                    </div>
                                 </div>
                                 <!-- end tile -->
                             </x-slot:button>
