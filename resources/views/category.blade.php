@@ -111,9 +111,9 @@
                                             @foreach($recipe['ingredients'] as $ingredient)
                                                 <tr class="odd:bg-bgColorSecondary even:bg-bgColorPrimary mt-3">
                                                     <td class="w-full pl-3 py-1"><p>{{ $ingredient['ingredient'] }}</p></td>
-                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['itemNumber'] }}</p></td>
-                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['supplier'] }}</p></td>
-                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden md:table-cell"><p>{{ $ingredient['type'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden sm:table-cell"><p>{{ $ingredient['itemNumber'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden sm:table-cell"><p>{{ $ingredient['supplier'] }}</p></td>
+                                                    <td class="whitespace-nowrap px-3 py-1 text-center hidden sm:table-cell"><p>{{ $ingredient['type'] }}</p></td>
                                                     <td class="w-auto whitespace-nowrap px-3 py-1"><p>{{ $ingredient['quantity'] }} {{ $ingredient['unit'] }}</p></td>
                                                     <!--
                                                     <td class="w-auto whitespace-nowrap pr-3 pl-0.5 py-1 text-left"><p> $ingredient['additionOne'] </p></td>
