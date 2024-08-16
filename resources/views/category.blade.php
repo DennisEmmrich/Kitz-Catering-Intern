@@ -39,10 +39,17 @@
                                     <div class="w-full h-56 grid content-end text-white text-xl lg:text-2xl font-bold font-sans rounded-xl shadow-md bg-cover bg-center relative"
                                          style="background-image: url('{{ !empty($recipe['thirdImage']) ? getImage($recipe['thirdImage']['_id'], 'webp', 600) : asset('assets/images/placeholder.jpeg') }}');">
 
-                                        @if(isset($recipe['vegetarian']) && $recipe['vegetarian'])
-                                            <img class="h-10 absolute top-2 right-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
-                                        @elseif(isset($recipe['vegan']) && $recipe['vegan'])
-                                            <img class="h-10 absolute top-2 right-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        <!-- images hidden bis icons vorhanden -->
+                                        @if(isset($recipe['vegan']) && $recipe['vegan'])
+                                            <img class="h-10 absolute top-2 right-2 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @elseif(isset($recipe['vegetarian']) && $recipe['vegetarian'])
+                                            <img class="h-10 absolute top-2 right-2 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @endif
+                                        @if(isset($recipe['glutenFree']) && $recipe['glutenFree'])
+                                            <img class="h-10 absolute top-2 right-10 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @endif
+                                        @if(isset($recipe['lactoseFree']) && $recipe['lactoseFree'])
+                                            <img class="h-10 absolute top-2 right-20 -mr-2 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
                                         @endif
 
                                         <div class="p-3 backdrop-blur-sm bg-bgColorSecondary/30 whitespace-nowrap rounded-b-xl">
@@ -78,17 +85,34 @@
                                 @endif
                             </div>
 
-                            <x-h2 class="mt-10">
-                                @if(isset($recipe['portion']['quantity']) && isset($recipe['recipeQuantity']['unit']))
-                                    Portionsgröße:
-                                    @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
-                                        {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
-                                    @else
-                                        {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
+                            <!-- images hidden bis icons vorhanden -->
+                            <div class="sm:flex mt-6 space-y-6 sm:space-y-0 items-center justify-between">
+                                <div class="flex space-x-2 sm:order-last">
+                                    @if(isset($recipe['vegan']) && $recipe['vegan'])
+                                        <img class="h-10 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                    @elseif(isset($recipe['vegetarian']) && $recipe['vegetarian'])
+                                        <img class="h-10 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
                                     @endif
-                                    {{ $recipe['recipeQuantity']['unit'] ?? '' }}
-                                @endif
-                            </x-h2>
+                                    @if(isset($recipe['glutenFree']) && $recipe['glutenFree'])
+                                        <img class="h-10 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                    @endif
+                                    @if(isset($recipe['lactoseFree']) && $recipe['lactoseFree'])
+                                        <img class="h-10 hidden" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                    @endif
+                                </div>
+
+                                <x-h2 class="max-h-fit my-auto">
+                                    @if(isset($recipe['portion']['quantity']) && isset($recipe['recipeQuantity']['unit']))
+                                        Portionsgröße:
+                                        @if(floor($recipe['portion']['quantity']) != $recipe['portion']['quantity'])
+                                            {{ number_format($recipe['portion']['quantity'], 1, ',', '.') }}
+                                        @else
+                                            {{ number_format($recipe['portion']['quantity'], 0, ',', '.') }}
+                                        @endif
+                                        {{ $recipe['recipeQuantity']['unit'] ?? '' }}
+                                    @endif
+                                </x-h2>
+                            </div>
 
                             <div class="grid grid-cols-6">
                                 @if(!empty($recipe['ingredients']))
