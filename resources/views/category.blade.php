@@ -44,6 +44,12 @@
                                         @elseif(isset($recipe['vegan']) && $recipe['vegan'])
                                             <img class="h-10 absolute top-2 right-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
                                         @endif
+                                        @if(isset($recipe['glutenFree']) && $recipe['glutenFree'])
+                                            <img class="h-10 absolute top-2 right-10" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @endif
+                                        @if(isset($recipe['lactoseFree']) && $recipe['lactoseFree'])
+                                            <img class="h-10 absolute top-2 right-20 -mr-2" src="{{ asset('assets/images/placeholder.jpeg') }}" alt="">
+                                        @endif
 
                                         <div class="p-3 backdrop-blur-sm bg-bgColorSecondary/30 whitespace-nowrap rounded-b-xl">
                                             {{ $recipe['product'] }}
