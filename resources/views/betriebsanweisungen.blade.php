@@ -22,14 +22,24 @@
 
         <div class="grid grid-cols-1" id="operatingInstructionContainer">
             @foreach($operatingInstructions as $operatingInstruction)
-                <div class="operating-instruction-item" data-title="{{ strtolower($operatingInstruction['title']) }}">
+                @php
+                    $fileExists = isset($operatingInstruction['file']) && isset($operatingInstruction['file']['_id']) && !empty(getAsset($operatingInstruction['file']['_id']));
+                @endphp
 
-                    <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">
-                        <x-list-item>
-                            {{ $operatingInstruction['title'] }}
-                        </x-list-item>
-                    </a>
-
+                <div class="operating-instruction-item {{ !$fileExists ? 'opacity-50' : '' }}" data-title="{{ strtolower($operatingInstruction['title']) }}">
+                    @if($fileExists)
+                        <a href="{{ getAsset($operatingInstruction['file']['_id']) }}">
+                            <x-list-item>
+                                {{ $operatingInstruction['title'] }}
+                            </x-list-item>
+                        </a>
+                    @else
+                        <div class="missing-file">
+                            <x-list-item>
+                                {{ $operatingInstruction['title'] }} (Datei nicht gefunden)
+                            </x-list-item>
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </div>
