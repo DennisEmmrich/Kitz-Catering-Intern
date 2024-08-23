@@ -22,14 +22,24 @@
 
         <div class="grid grid-cols-1" id="manualContainer">
             @foreach($manuals as $manual)
-                <div class="manual-item" data-title="{{ strtolower($manual['title']) }}">
+                @php
+                    $fileExists = isset($manual['file']) && isset($manual['file']['_id']) && !empty(getAsset($manual['file']['_id']));
+                @endphp
 
-                    <a href="{{ getAsset($manual['file']['_id']) }}">
-                        <x-list-item>
-                            {{ $manual['title'] }}
-                        </x-list-item>
-                    </a>
-
+                <div class="manual-item {{ !$fileExists ? 'opacity-50' : '' }}" data-title="{{ strtolower($manual['title']) }}">
+                    @if($fileExists)
+                        <a href="{{ getAsset($manual['file']['_id']) }}">
+                            <x-list-item>
+                                {{ $manual['title'] }}
+                            </x-list-item>
+                        </a>
+                    @else
+                        <div class="missing-file">
+                            <x-list-item>
+                                {{ $manual['title'] }} (Datei nicht gefunden)
+                            </x-list-item>
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </div>
