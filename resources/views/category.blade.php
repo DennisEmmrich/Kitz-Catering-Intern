@@ -88,7 +88,6 @@
                                 @endif
                             </div>
 
-                            <!-- images hidden bis icons vorhanden -->
                             <div class="sm:flex mt-6 space-y-6 sm:space-y-0 items-center justify-between">
                                 <div class="flex space-x-2 sm:order-last">
                                     @if(isset($recipe['vegan']) && $recipe['vegan'])
