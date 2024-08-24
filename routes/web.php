@@ -22,6 +22,8 @@ Route::get('/rezepte', [PageController::class,'recipes'])->name('rezepte');
 
 Route::get('/rezepte/{slug}', [PageController::class,'category'])->name('rezept');
 
+Route::get('/aushaenge', [PageController::class,'notices'])->name('aushaenge');
+
 Route::get('/betriebsanweisungen', [PageController::class,'operatingInstructions'])->name('betriebsanweisungen');
 
 Route::get('/gebrauchsanweisungen', [PageController::class,'manuals'])->name('gebrauchsanweisungen');

@@ -112,4 +112,23 @@ class PageController extends Controller
             'laws' => $laws
         ]);
     }
+
+    public function notices()
+    {
+        $cms = new CockpitApiClient;
+        $notices = $cms->model('notices')->result();
+
+
+        // Funktion zur Vergleichsfunktion für die Sortierung nach dem Titel
+        $compareFunction = function($a, $b) {
+            return strcmp($a['title'], $b['title']);
+        };
+
+        // Alphabetisch nach Titel sortieren
+        usort($notices, $compareFunction);
+
+        return view('aushaenge', [
+            'notices' => $notices
+        ]);
+    }
 }
