@@ -32,7 +32,7 @@
                 <x-slot:headline>Rezepte</x-slot:headline>
             </x-dashboard-tile>
 
-            <x-dashboard-tile :path="asset('assets/images/placeholder.jpeg')">
+            <x-dashboard-tile :path="asset('assets/images/aushaenge.jpg')">
                 <x-slot:link>{{ route('aushaenge') }}</x-slot:link>
                 <x-slot:headline>Aushänge</x-slot:headline>
             </x-dashboard-tile>
