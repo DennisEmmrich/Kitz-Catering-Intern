@@ -128,7 +128,7 @@
                                                 <input
                                                     type="number"
                                                     id="desired-portions-{{ $loop->index }}"
-                                                    class="border px-2 py-1 ml-2 bg-bgColorPrimary rounded focus:border-[#dfcc91] focus:ring focus:ring-[#dfcc91] focus:outline-none"
+                                                    class="border px-2 py-1 sm:ml-2 bg-bgColorPrimary rounded focus:border-[#dfcc91] focus:ring focus:ring-[#dfcc91] focus:outline-none"
                                                     value=""
                                                     min="1"
                                                     step="1"
