@@ -41,17 +41,17 @@
 
                                     <div class="absolute top-2 right-2 flex space-x-0.5">
                                         @if(isset($recipe['vegan']) && $recipe['vegan'])
-                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/vegan.png') }}" alt="">
+                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/veganNew.png') }}" alt="">
                                         @elseif(isset($recipe['vegetarian']) && $recipe['vegetarian'])
-                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/vegetarian.png') }}" alt="">
+                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/vegetarianNew.png') }}" alt="">
                                         @endif
 
                                         @if(isset($recipe['glutenFree']) && $recipe['glutenFree'])
-                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/glutenFree.png') }}" alt="">
+                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/glutenFreeNew.png') }}" alt="">
                                         @endif
 
                                         @if(isset($recipe['lactoseFree']) && $recipe['lactoseFree'])
-                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/lactoseFree.png') }}" alt="">
+                                            <img class="h-10 rounded-full" src="{{ asset('assets/images/lactoseFreeNew.png') }}" alt="">
                                         @endif
                                     </div>
 
@@ -91,15 +91,15 @@
                         <div class="sm:flex mt-6 space-y-6 sm:space-y-0 items-center justify-between">
                             <div class="flex space-x-2 sm:order-last">
                                 @if(isset($recipe['vegan']) && $recipe['vegan'])
-                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/vegan.png') }}" alt="">
+                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/veganNew.png') }}" alt="">
                                 @elseif(isset($recipe['vegetarian']) && $recipe['vegetarian'])
-                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/vegetarian.png') }}" alt="">
+                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/vegetarianNew.png') }}" alt="">
                                 @endif
                                 @if(isset($recipe['glutenFree']) && $recipe['glutenFree'])
-                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/glutenFree.png') }}" alt="">
+                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/glutenFreeNew.png') }}" alt="">
                                 @endif
                                 @if(isset($recipe['lactoseFree']) && $recipe['lactoseFree'])
-                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/lactoseFree.png') }}" alt="">
+                                    <img class="h-14 rounded-full" src="{{ asset('assets/images/lactoseFreeNew.png') }}" alt="">
                                 @endif
                             </div>
 
